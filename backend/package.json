@@ -3,14 +3,20 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsnd ./app.ts"
+    "dev": "tsnd --respawn ./app.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "convert-csv-to-json": "^3.20.0",
     "express": "^5.2.1",
+    "multer": "^2.0.2",
     "ts-node-dev": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.0.0"
   }
 }
