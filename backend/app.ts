@@ -33,7 +33,6 @@ app.get("/api/users", (req, res) => {
             if (matchPerson(person.first_name.toLocaleLowerCase(), query)) arr.push(person);
             if (matchPerson(person.company.toLocaleLowerCase(), query)) arr.push(person);
             if (matchPerson(person.id.toLocaleLowerCase(), query)) arr.push(person);
-            if (matchPerson(person.job_title.toLocaleLowerCase(), query)) arr.push(person);
             if (matchPerson(person.last_name.toLocaleLowerCase(), query)) arr.push(person);
             if (matchPerson(person.country.toLocaleLowerCase(), query)) arr.push(person);
             if (matchPerson(person.email.toLocaleLowerCase(), query)) arr.push(person);

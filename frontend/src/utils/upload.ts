@@ -1,4 +1,4 @@
-import type { ApiUploadResponse } from "./types";
+import type { ApiUploadResponse } from "../types";
 
 export const uploadFile = async (file: File): Promise<[Error?, ApiUploadResponse?]> => {
 
