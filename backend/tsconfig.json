@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "module": "nodenext",
+        "moduleResolution": "NodeNext",
+    },
+    "include": ["**/*.ts", "util.js"]
+}
