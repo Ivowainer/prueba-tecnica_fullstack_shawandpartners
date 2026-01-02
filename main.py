@@ -14,8 +14,6 @@ for i in range(500):
         "age": random.randint(18, 70),
         "country": fake.country(),
         "company": fake.company(),
-        "job_title": fake.job(),
-        "signup_date": fake.date_between(start_date="-5y", end_date="today").isoformat()
     })
 
 df = pd.DataFrame(rows)

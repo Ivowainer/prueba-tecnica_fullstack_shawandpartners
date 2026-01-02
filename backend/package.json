@@ -11,11 +11,13 @@
   "description": "",
   "dependencies": {
     "convert-csv-to-json": "^3.20.0",
+    "cors": "^2.8.5",
     "express": "^5.2.1",
     "multer": "^2.0.2",
     "ts-node-dev": "^2.0.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/multer": "^2.0.0"
   }

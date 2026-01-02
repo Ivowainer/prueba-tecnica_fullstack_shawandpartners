@@ -3,21 +3,16 @@ import multer from "multer";
 import ctj from "convert-csv-to-json";
 import fs from "node:fs";
 import { matchPerson } from "./util.js";
+import cors from 'cors'
 
-export interface IPersona {
-    id: string;
-    first_name: string;
-    last_name: string;
-    email: string;
-    age: string;
-    country: string;
-    company: string;
-    job_title: string;
-    signup_date: string;
-}
+import {IPersona} from "../shared/types/persona.js"
 
 const app = express();
 const PORT = 3000;
+
+app.use(cors({
+    origin: "http://localhost:4000"
+}))
 
 app.get("/api/users", (req, res) => {
     if (Object.keys(req.query).length === 0) {
@@ -52,20 +47,21 @@ app.get("/api/users", (req, res) => {
 });
 
 app.post("/api/files", multer().single("file"), (req, res) => {
-    console.log(req.file);
     if (!req.file || req.file.mimetype != "text/csv" || req.file.fieldname != "file") {
         return res.status(400).json({ message: "Archivo invalido" });
     }
 
     try {
         const dataString = req.file?.buffer.toString();
-        const data = ctj.fieldDelimiter(",").csvStringToJsonStringified(dataString!);
-        fs.writeFileSync("db.json", data);
+        const jsonString = ctj.fieldDelimiter(",").csvStringToJsonStringified(dataString!);
+        const data = JSON.parse(jsonString) as IPersona[]
+        fs.writeFileSync("db.json", jsonString);
+        
+        res.status(200).json({ message: "El archivo se cargó correctamente", data });
     } catch (error) {
         return res.status(500).json({ message: "Error interno" });
     }
 
-    res.status(200).json({ message: "El archivo se cargó correctamente" });
 });
 
 app.listen(PORT, () => {
